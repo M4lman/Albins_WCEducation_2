@@ -1,0 +1,41 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:Client.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Client.Views.StudentsView"
+             x:DataType="vm:StudentsViewModel">
+
+  <StackPanel>
+    <TextBlock Classes="pageTitle" Text="{Binding PageTitle}"/>
+    <Button HorizontalAlignment="Left" Classes="form" MaxWidth="300" Command="{Binding $parent[Window].((vm:MainWindowViewModel)DataContext).GoToAddStudentCommand}">
+      <StackPanel Orientation="Horizontal">
+        <Label FontFamily="{DynamicResource IconFont}" Content="&#xe3d4;" Padding="0 5 5 0"/>
+        <Label Content="Lägg till elev"/>
+      </StackPanel>
+    </Button>
+
+    <Border BorderBrush="{DynamicResource BorderBrushColor}" BorderThickness="0 0 0 1" Padding="0 50 0 5">
+      <Grid ColumnDefinitions="100,200,200,*" ShowGridLines="False">
+        <Label Content="Elevnr" />
+        <Label Grid.Column="1" Content="Förnamn" />
+        <Label Grid.Column="2" Content="Efternamn" />
+        <Label Grid.Column="3" Content="E-Post" />
+      </Grid>
+    </Border>
+    <ItemsControl ItemsSource="{Binding Students}">
+      <ItemsControl.ItemTemplate>
+        <DataTemplate>
+          <Grid ColumnDefinitions="100,200,200,*" ShowGridLines="False">
+            <Label Content="{Binding Id}" />
+            <Label Grid.Column="1" Content="{Binding FirstName}" />
+            <Label Grid.Column="2" Content="{Binding LastName}" />
+            <Label Grid.Column="3" Content="{Binding Email}" />
+          </Grid>
+        </DataTemplate>
+      </ItemsControl.ItemTemplate>
+    </ItemsControl>
+
+  </StackPanel>
+</UserControl>

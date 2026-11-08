@@ -1,0 +1,20 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <!-- Add Resources Here -->
+
+  <SolidColorBrush x:Key="ForegroundColor" Color="{DynamicResource PrimaryForegroundColor}" />
+  <SolidColorBrush x:Key="BackgroundColor" Color="{DynamicResource PrimaryBackgroundColor}" />
+  <SolidColorBrush x:Key="Danger" Color="{DynamicResource DangerColor}" />
+  <SolidColorBrush x:Key="Success" Color="{DynamicResource SuccessColor}" />
+  <SolidColorBrush x:Key="BorderBrushColor" Color="{DynamicResource PrimaryForegroundColor}" />
+  <SolidColorBrush x:Key="Warning" Color="{DynamicResource WarningColor}" />
+  <SolidColorBrush x:Key="InputBackground" Color="{DynamicResource InputBackgroundColor}" />
+  <SolidColorBrush x:Key="FormBackground" Color="{DynamicResource FormBackgroundColor}" />
+  <SolidColorBrush x:Key="ControlBorder" Color="{DynamicResource ControlBorderColor}" />
+  <SolidColorBrush x:Key="ButtonHover" Color="{DynamicResource ButtonHoverColor}" />
+
+  <LinearGradientBrush x:Key="PrimaryBackgroundGradient" StartPoint="0% 0%" EndPoint="100% 0%">
+    <GradientStop Offset="0" Color="{DynamicResource PrimaryBackgroundColor}"/>
+    <GradientStop Offset="1" Color="{DynamicResource SecondaryBackgroundColor}"/>
+  </LinearGradientBrush>
+</ResourceDictionary>

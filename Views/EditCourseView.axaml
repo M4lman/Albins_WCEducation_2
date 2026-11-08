@@ -1,0 +1,51 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:Client.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Client.Views.EditCourseView"
+             x:DataType="vm:EditCourseViewModel">
+
+  <StackPanel>
+    <TextBlock Classes="pageTitle" Text="{Binding PageTitle}" />
+    <TextBlock Text="{Binding SaveMessage}" Foreground="{DynamicResource Success}" TextWrapping="Wrap" />
+    <Border HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{DynamicResource BorderBrushColor}" BorderThickness="0" Padding="0 30">
+      <StackPanel>
+        <Grid
+            RowSpacing="10"
+            ColumnSpacing="10"
+            ColumnDefinitions="200,*"
+            RowDefinitions="Auto,Auto,Auto,Auto,Auto"
+            ShowGridLines="False">
+
+          <Label Classes="form" Grid.Row="0" HorizontalAlignment="Right" Content="Kursnummer" />
+          <Label Classes="form" Grid.Row="1" HorizontalAlignment="Right" Content="Kursnamn" />
+          <Label Classes="form" Grid.Row="2" HorizontalAlignment="Right" Content="Startdatum" />
+          <Label Classes="form" Grid.Row="3" HorizontalAlignment="Right" Content="Slutdatum" />
+          <Label Classes="form" Grid.Row="4" HorizontalAlignment="Right" Content="Längd" />
+
+          <TextBox Classes="form" Text="{Binding CourseNumber}" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left" />
+          <TextBox Classes="form" Text="{Binding Title}" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" />
+          <TextBox Classes="form" Text="{Binding StartDate}" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" />
+          <TextBox Classes="form" Text="{Binding EndDate}" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Left" />
+          <TextBox Classes="form" Text="{Binding Length}" Grid.Column="1" Grid.Row="4" HorizontalAlignment="Left" />
+        </Grid>
+        <StackPanel Spacing="20" Margin="0 30 0 0" Orientation="Horizontal" HorizontalAlignment="Center">
+          <Button Classes="form" Command="{Binding SaveCommand}">
+            <StackPanel Orientation="Horizontal">
+              <Label Padding="5" FontFamily="{DynamicResource IconFont}" Content="&#xe248;" />
+              <Label Content="Spara" />
+            </StackPanel>
+          </Button>
+          <Button Classes="form" Command="{Binding $parent[Window].((vm:MainWindowViewModel)DataContext).GoToCoursesCommand}" >
+            <StackPanel Orientation="Horizontal">
+              <Label Padding="5" FontFamily="{DynamicResource IconFont}" Content="&#xe08a;" />
+              <Label Content="Tillbaka" />
+            </StackPanel>
+          </Button>
+        </StackPanel>
+      </StackPanel>
+    </Border>
+  </StackPanel>
+</UserControl>

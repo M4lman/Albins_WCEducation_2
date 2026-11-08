@@ -1,0 +1,44 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:Client.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="1000" d:DesignHeight="700"
+             x:Class="Client.Views.TeachersView"
+             x:DataType="vm:TeachersViewModel">
+  <StackPanel Spacing="8">
+    <TextBlock Classes="pageTitle" Text="{Binding PageTitle}" />
+    <Button HorizontalAlignment="Left" Classes="form" MaxWidth="300" Command="{Binding $parent[Window].((vm:MainWindowViewModel)DataContext).GoToAddTeacherCommand}">
+      <StackPanel Orientation="Horizontal">
+        <Label FontFamily="{DynamicResource IconFont}" Content="&#xe3d4;" Padding="0 5 5 0"/>
+        <Label Content="Lägg till lärare"/>
+      </StackPanel>
+    </Button>
+    <Grid ColumnDefinitions="150,180,240,*,80" Margin="0 20 0 0">
+      <Label Content="Förnamn" />
+      <Label Grid.Column="1" Content="Efternamn" />
+      <Label Grid.Column="2" Content="E-post" />
+      <Label Grid.Column="3" Content="Kompetensområde" />
+      <Label Grid.Column="4" />
+    </Grid>
+    <ItemsControl ItemsSource="{Binding Teachers}">
+      <ItemsControl.ItemTemplate>
+        <DataTemplate>
+          <Grid ColumnDefinitions="150,180,240,*,80" ColumnSpacing="8" Margin="0 4">
+            <Label Content="{Binding FirstName}" VerticalAlignment="Center" />
+            <Label Grid.Column="1" Content="{Binding LastName}" VerticalAlignment="Center" />
+            <Label Grid.Column="2" Content="{Binding Email}" VerticalAlignment="Center" />
+            <Label Grid.Column="3" Content="{Binding Expertise}" VerticalAlignment="Center" />
+            <Button Grid.Column="4"
+                    Command="{Binding $parent[Window].((vm:MainWindowViewModel)DataContext).GoToEditTeacherCommand}"
+                    CommandParameter="{Binding _id}"
+                    FontFamily="{DynamicResource IconFont}"
+                    Content="&#xebc6;"
+                    Foreground="{DynamicResource Success}"
+                    Padding="15 5" />
+          </Grid>
+        </DataTemplate>
+      </ItemsControl.ItemTemplate>
+    </ItemsControl>
+  </StackPanel>
+</UserControl>

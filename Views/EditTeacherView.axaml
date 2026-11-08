@@ -1,0 +1,31 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:Client.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="500"
+             x:Class="Client.Views.EditTeacherView"
+             x:DataType="vm:EditTeacherViewModel">
+  <StackPanel>
+    <TextBlock Classes="pageTitle" Text="{Binding PageTitle}" />
+    <TextBlock Text="{Binding SaveMessage}" Foreground="{DynamicResource Success}" TextWrapping="Wrap" />
+    <Border HorizontalAlignment="Center" Padding="0 30" BorderBrush="{DynamicResource BorderBrushColor}" BorderThickness="0">
+      <StackPanel>
+        <Grid RowSpacing="10" ColumnSpacing="10" ColumnDefinitions="200,*" RowDefinitions="Auto,Auto,Auto,Auto">
+          <Label HorizontalAlignment="Right" Content="Förnamn" />
+          <Label Grid.Row="1" HorizontalAlignment="Right" Content="Efternamn" />
+          <Label Grid.Row="2" HorizontalAlignment="Right" Content="E-post" />
+          <Label Grid.Row="3" HorizontalAlignment="Right" Content="Kompetensområde" />
+          <TextBox Grid.Column="1" Text="{Binding FirstName}" />
+          <TextBox Grid.Column="1" Grid.Row="1" Text="{Binding LastName}" />
+          <TextBox Grid.Column="1" Grid.Row="2" Text="{Binding Email}" />
+          <TextBox Grid.Column="1" Grid.Row="3" Text="{Binding Expertise}" />
+        </Grid>
+        <StackPanel Orientation="Horizontal" Spacing="12" HorizontalAlignment="Center" Margin="0 24 0 0">
+          <Button Classes="form" Command="{Binding SaveCommand}" Content="Spara" />
+          <Button Classes="form" Command="{Binding $parent[Window].((vm:MainWindowViewModel)DataContext).GoToTeachersCommand}" Content="Tillbaka" />
+        </StackPanel>
+      </StackPanel>
+    </Border>
+  </StackPanel>
+</UserControl>
